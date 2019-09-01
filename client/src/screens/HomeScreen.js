@@ -15,6 +15,9 @@ const HomeScreen = props => {
 const styles = StyleSheet.create({
   mainContainer: {
     paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

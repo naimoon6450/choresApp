@@ -6,7 +6,6 @@ import { AntDesign } from '@expo/vector-icons';
 const LoginScreen = ({ navigation }) => {
   return (
     <View style={styles.mainContainer}>
-      <Text style={styles.loginText}>Login Screen</Text>
       <Button
         style={styles.buttonContainer}
         onPress={() => console.log(navigation.navigate('App'))}
@@ -21,9 +20,13 @@ const LoginScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   mainContainer: {
     paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   buttonContainer: {
-    flexDirection: 'row',
+    width: '70%',
+    alignItems: 'center',
     justifyContent: 'center',
   },
   iconStyle: {
@@ -34,12 +37,12 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 16,
-    alignSelf: 'center',
+    // alignSelf: 'center',
   },
   loginText: {
     fontSize: 18,
     fontWeight: 'bold',
-    flexGrow: 1,
+    // flexGrow: 1,
     textAlign: 'center',
   },
 });
