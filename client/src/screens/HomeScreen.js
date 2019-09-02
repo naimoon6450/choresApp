@@ -13,7 +13,6 @@ const HomeScreen = props => {
   const { userInfo } = props;
   return userInfo ? (
     <View style={styles.mainContainer}>
-      <Text>Home Screen</Text>
       <Text>Welcome {userInfo.name}</Text>
       <Image style={styles.image} source={{ uri: `${userInfo.pictureUrl}` }} />
     </View>

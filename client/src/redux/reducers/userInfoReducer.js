@@ -4,6 +4,7 @@ const { GOT_USER_INFO } = require('./../creators');
 const initialState = {
   name: '',
   pictureUrl: '',
+  isSignedIn: false,
 };
 
 export default userInfoReducer = (state = initialState, action) => {
@@ -13,6 +14,7 @@ export default userInfoReducer = (state = initialState, action) => {
         ...state,
         name: action.name,
         pictureUrl: action.pictureUrl,
+        isSignedIn: action.isSignedIn,
       };
     }
     default:

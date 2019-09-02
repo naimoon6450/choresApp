@@ -13,13 +13,14 @@ import { AntDesign } from '@expo/vector-icons';
 import { connect } from 'react-redux';
 import { fbLogin } from '../redux/creators';
 
-const LoginScreen = ({ fbLoginDisp, userInfo }) => {
+const LoginScreen = ({ fbLoginDisp, userInfo, navigation }) => {
   return (
     <View style={styles.mainContainer}>
       <Button
         style={styles.buttonContainer}
         onPress={() => {
           fbLoginDisp();
+          // navigation.navigate('App');
         }}
       >
         <AntDesign name="facebook-square" style={styles.iconStyle} />

@@ -1,14 +1,17 @@
 import * as Facebook from 'expo-facebook';
 import axios from 'axios';
+// can remove the navigate below as mark may have handled it
+import { navigate } from '../../../App';
 
 // action constants
 export const GOT_USER_INFO = 'GOT_USER_INFO';
 
 // action creators
-export const gotUserInfo = (name, pictureUrl) => ({
+export const gotUserInfo = (name, pictureUrl, isSignedIn) => ({
   type: GOT_USER_INFO,
   name,
   pictureUrl,
+  isSignedIn,
 });
 
 // fb login thunk, using fetch temporarily
@@ -28,7 +31,9 @@ export const fbLogin = () => dispatch => {
           .then(data => {
             // console.log(data);
             // Alert.alert('Logged in!', `Hi ${data.name}!`);
-            dispatch(gotUserInfo(data.name, data.picture.data.url));
+            dispatch(gotUserInfo(data.name, data.picture.data.url, true));
+            // may need to change
+            navigate('Home');
           })
           .catch(err => console.error('Login error: ', err));
       }
