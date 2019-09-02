@@ -1,5 +1,5 @@
 import * as Facebook from 'expo-facebook';
-// this is just a place holder
+import axios from 'axios';
 
 // action constants
 export const GOT_USER_INFO = 'GOT_USER_INFO';
@@ -20,10 +20,11 @@ export const fbLogin = () => dispatch => {
       const { type, token, expires, permissions, declinedPermissions } = result;
       if (type === 'success') {
         // Get the user's name using Facebook's Graph API
-        fetch(
-          `https://graph.facebook.com/me?fields=name,email,hometown,picture&access_token=${token}`
-        )
-          .then(result => result.json())
+        axios
+          .get(
+            `https://graph.facebook.com/me?fields=name,email,hometown,picture&access_token=${token}`
+          )
+          .then(result => result.data)
           .then(data => {
             // console.log(data);
             // Alert.alert('Logged in!', `Hi ${data.name}!`);
