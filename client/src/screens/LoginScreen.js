@@ -1,14 +1,26 @@
 import React from 'react';
-import { View, Text, StyleSheet, Platform, StatusBar } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Platform,
+  StatusBar,
+  Alert,
+} from 'react-native';
 import { Button } from 'native-base';
 import { AntDesign } from '@expo/vector-icons';
 
-const LoginScreen = ({ navigation }) => {
+import { connect } from 'react-redux';
+import { fbLogin } from '../redux/creators';
+
+const LoginScreen = ({ fbLoginDisp, userInfo }) => {
   return (
     <View style={styles.mainContainer}>
       <Button
         style={styles.buttonContainer}
-        onPress={() => console.log(navigation.navigate('App'))}
+        onPress={() => {
+          fbLoginDisp();
+        }}
       >
         <AntDesign name="facebook-square" style={styles.iconStyle} />
         <Text style={styles.buttonText}>Login With Facebook</Text>
@@ -47,4 +59,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+const mapState = ({ userInfo }) => ({ userInfo });
+const mapDispatchToState = dispatch => {
+  return {
+    fbLoginDisp: () => dispatch(fbLogin()),
+  };
+};
+export default connect(
+  mapState,
+  mapDispatchToState
+)(LoginScreen);
