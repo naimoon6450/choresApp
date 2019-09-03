@@ -8,8 +8,10 @@ const swapChoreRoutes = require('./swapChoreRoutes');
 const transferChoreRoutes = require('./transferChoreRoutes');
 const adminRoutes = require('./adminRoutes');
 const choresRoutes = require('./choresRoutes');
+const authRoutes = require('./authRoutes');
 
 // set api routes here
+apiRoutes.use('/auth', authRoutes);
 
 apiRoutes.use('*', (req, res, next) => {
   if (req.isAuthenticated() || process.env.TEST_SESSION === 'true') next();
