@@ -17,8 +17,8 @@ import { fbLogin } from '../redux/creators';
 
 const LoginScreen = ({ navigation, fbLoginDisp }) => {
   return (
-    <SafeAreaView>
-      <View style={styles.mainContainer}>
+    <SafeAreaView style={styles.mainContainer}>
+      <View>
         <Text style={styles.loginText}>Login Screen</Text>
         {REACT_ENV === 'development' ? (
           <Button
@@ -27,14 +27,6 @@ const LoginScreen = ({ navigation, fbLoginDisp }) => {
           >
             <Text style={styles.buttonText}>Theme Guide</Text>
           </Button>
-        ) : null}
-        <Button
-          style={styles.fbButtonContainer}
-          onPress={() => navigation.navigate('App')}
-        >
-          <AntDesign name="facebook-square" style={styles.iconStyle} />
-          <Text style={styles.buttonText}>Login With Facebook</Text>
-        </Button>
         ) : null}
         <Button style={styles.fbButtonContainer} onPress={() => fbLoginDisp()}>
           <AntDesign name="facebook-square" style={styles.iconStyle} />
@@ -48,21 +40,14 @@ const LoginScreen = ({ navigation, fbLoginDisp }) => {
 const styles = StyleSheet.create({
   mainContainer: {
     paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
-    flexDirection: 'column',
-    justifyContent: 'center',
-    backgroundColor: theme.PRIMARY_COLOR,
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: theme.PRIMARY_COLOR,
   },
   themeButtonContainer: {
-    width: 200,
-    flexDirection: 'row',
     justifyContent: 'center',
     backgroundColor: theme.SECONDARY_COLOR,
-    alignSelf: 'center',
-  },
-  fbButtonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
   },
   iconStyle: {
     fontSize: 30,
@@ -92,5 +77,5 @@ const mapDispatchToState = dispatch => {
 
 export default connect(
   mapState,
-  mapDispatchToState,
+  mapDispatchToState
 )(LoginScreen);

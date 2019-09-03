@@ -20,11 +20,11 @@ const RootSwitch = createSwitchNavigator(
     Main: MainNav,
   },
   {
-    initialRouteName: INITIAL_SCREEN,
+    initialRouteName: 'Login',
     defaultNavigationOptions: {
       header: null,
     },
-  },
+  }
 );
 
 const Navigation = createAppContainer(RootSwitch);

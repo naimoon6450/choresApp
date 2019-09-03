@@ -6,6 +6,7 @@ const passport = require('passport');
 const path = require('path');
 const chalk = require('chalk');
 const auth = require('./config/auth');
+const authRoutes = require('./apiRoutes/authRoutes');
 
 const app = express();
 
@@ -16,10 +17,12 @@ app.use(morgan(morganMode));
 
 app.use(express.json());
 
-app.use(cookieSession({
-  maxAge: 24 * 60 * 60 * 1000,
-  keys: [auth.session.cookieKey]
-}));
+app.use(
+  cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [auth.session.cookieKey],
+  })
+);
 
 app.use(passport.initialize());
 
@@ -27,10 +30,11 @@ app.use(passport.session());
 
 if (process.env.NODE_ENV === 'development') {
   app.use(express.urlencoded({ extended: false }));
-};
+}
 
 const apiRoutes = require('./apiRoutes');
 
+app.use('/auth', authRoutes);
 app.use('/api', apiRoutes);
 
 // error middleware
