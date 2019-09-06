@@ -6,7 +6,6 @@ import { fetchChores } from '../redux/creators/userInfoCreators';
 
 const UserChoresScreen = props => {
   const { userInfo, allChores } = props;
-  allChores();
   return <ChoreCard />;
 };
 

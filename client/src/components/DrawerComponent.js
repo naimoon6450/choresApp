@@ -71,7 +71,7 @@ const menuPaddingLeft = 10;
 const menuGroupVerticalMargin = 2.5;
 const styles = StyleSheet.create({
   safeView: {
-    height: windowHeight,
+    height: windowHeight - 20,
     paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight,
     backgroundColor: theme.SECONDARY_COLOR,
     alignItems: 'flex-start',

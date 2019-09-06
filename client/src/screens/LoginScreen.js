@@ -1,6 +1,13 @@
 import React from 'react';
 import { REACT_ENV } from 'react-native-dotenv';
-import { View, Text, StyleSheet, Platform, StatusBar } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Platform,
+  StatusBar,
+  Linking,
+} from 'react-native';
 import { Button } from 'native-base';
 import { AntDesign } from '@expo/vector-icons';
 import theme from './../styles/theme.style';
